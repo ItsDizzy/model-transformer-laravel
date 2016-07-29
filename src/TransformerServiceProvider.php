@@ -26,5 +26,5 @@ class TransformerServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function register() { // Nothing to register sorry :( }
+    public function register() { } // Nothing to register sorry :(
 }
