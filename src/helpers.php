@@ -5,7 +5,7 @@ if ( ! function_exists('transform')) {
     {
         $args = func_get_args();
 
-        if ( ! isset($args[0]))
+        if (!isset($args[0]))
             throw new \Dizzy\Transformer\Exceptions\TransformerException('Argument 1 of the transform function is missing.');
 
         if ($args[0] instanceof \Illuminate\Database\Eloquent\Model) {
@@ -14,6 +14,10 @@ if ( ! function_exists('transform')) {
             $model = $args[0]->first();
         } else {
             throw new \Dizzy\Transformer\Exceptions\TransformerException('Argument 1 of the transform function must be an instance of Model or Collection.');
+        }
+
+        if (!$model) {
+            throw new \Dizzy\Transformer\Exceptions\TransformerException('Argument 1 of the transform function has an empty Collection.');
         }
 
         $reflector = new ReflectionClass($model);
